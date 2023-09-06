@@ -38,10 +38,13 @@
                                 <a href="{{ route('admin.types.edit', $type) }}" class="btn btn-warning me-2">
                                     <i class="fa-solid fa-pen-nib"></i>
                                 </a>
-
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
+                                {{-- <form action="{{ route('admin.types.destroy', $project) }}" method="POST">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="button" class="btn btn-danger">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form> --}}
 
                             </div>
                         </td>

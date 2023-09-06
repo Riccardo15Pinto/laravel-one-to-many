@@ -21,7 +21,7 @@
 
                     </div>
                     <div>
-                        <a href="#" class="btn btn-warning">
+                        <a href="{{ route('admin.types.edit', $type) }}" class="btn btn-warning">
                             <i class="fa-solid fa-pen-nib"></i>
                             Edit
                         </a>

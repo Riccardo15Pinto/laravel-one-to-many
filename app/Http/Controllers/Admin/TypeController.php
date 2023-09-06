@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TypeController extends Controller
 {
@@ -32,16 +33,15 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         $data_new_type = $request->all();
-        // dd($data_new_type);
         $request->validate(
             [
                 'label' => 'required|string|max:30',
-                'color' => 'nullable|regex:/^[0-9A-Fa-f]{6}$/',
+                'color' => 'nullable|regex:/^#(?:[0-9a-fA-F]{3}){1,2}$/',
             ],
             [
                 'label.required' => 'Il nome della tipologia è obbligatorio',
                 'label.max' => 'Il nome della tipologia è troppo lungo',
-                'color.hex' => 'Il colore inserito non è un colore',
+                'color.regex' => 'Il colore inserito non è un colore esadecimale valido',
             ]
         );
 
@@ -49,7 +49,7 @@ class TypeController extends Controller
         $type->fill($data_new_type);
         $type->save();
 
-        return to_route('admin.type.show', $type)->with('alert-type', 'success')->with('alert-message', "$type->label creato con successo");
+        return to_route('admin.types.index')->with('alert-type', 'success')->with('alert-message', "$type->label creato con successo");
     }
 
     /**
@@ -73,7 +73,21 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $data_new_type = $request->all();
+        $request->validate(
+            [
+                'label' => ['required', 'string', 'max:30', Rule::unique('types')->ignore($type)],
+                'color' => 'nullable|regex:/^#(?:[0-9a-fA-F]{3}){1,2}$/',
+            ],
+            [
+                'label.required' => 'Il nome della tipologia è obbligatorio',
+                'label.max' => 'Il nome della tipologia è troppo lungo',
+                'color.regex' => 'Il colore inserito non è un colore esadecimale valido',
+            ]
+        );
+
+        $type->update($data_new_type);
+        return to_route('admin.types.show', compact('type'))->with('alert-type', 'success')->with('alert-message', "$type->label modificato con successo");
     }
 
     /**
