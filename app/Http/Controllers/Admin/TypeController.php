@@ -36,9 +36,9 @@ class TypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Type $type)
     {
-        //
+        return view('admin.type.show', compact('type'));
     }
 
     /**
