@@ -12,8 +12,8 @@
                     <th scope="col">ID</th>
                     <th scope="col">Nome Progetto</th>
                     <th scope="col">Repository</th>
-                    <th scope="col">tipo</th>
-                    <th scope="col">Tech usata</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Tipologia</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -25,6 +25,7 @@
                         <td>
                             <a href="{{ $project->url_project }}">Vedi progetto su GitHub</a>
                         </td>
+                        <td>{{ $project->description_project }}</td>
                         <td>{{ $project->type->label }}</td>
                         <td>
                             <div class="d-flex">
