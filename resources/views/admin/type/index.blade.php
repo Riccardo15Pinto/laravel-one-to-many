@@ -35,7 +35,7 @@
                                 <a href="{{ route('admin.types.show', $type) }}" class="btn btn-primary me-2">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
-                                <a href="#" class="btn btn-warning me-2">
+                                <a href="{{ route('admin.types.edit', $type) }}" class="btn btn-warning me-2">
                                     <i class="fa-solid fa-pen-nib"></i>
                                 </a>
 
@@ -57,7 +57,7 @@
             </tbody>
         </table>
         <div class="d-flex align-items-center justify-content-between">
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.types.create') }}" class="btn btn-primary">
                 <i class="fa-solid fa-plus"></i>
                 Aggiungi Nuova categoria
             </a>
@@ -71,6 +71,5 @@
 @endsection
 
 @section('scripts')
-
     @vite('resources/js/toast.js')
 @endsection
