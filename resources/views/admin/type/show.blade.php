@@ -25,10 +25,13 @@
                             <i class="fa-solid fa-pen-nib"></i>
                             Edit
                         </a>
-                        <a href="#" class="btn btn-danger">
-                            <i class="fa-solid fa-trash-can"></i>
-                            Delete
-                        </a>
+                        <form action="{{ route('admin.types.destroy', $type) }}" method="POST">
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

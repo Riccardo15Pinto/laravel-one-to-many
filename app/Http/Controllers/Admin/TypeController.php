@@ -95,6 +95,9 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return to_route('admin.types.index')
+            ->with('alert-type', 'success')
+            ->with('alert-message', "$type->label eliminato con successo");
     }
 }

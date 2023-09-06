@@ -38,13 +38,13 @@
                                 <a href="{{ route('admin.types.edit', $type) }}" class="btn btn-warning me-2">
                                     <i class="fa-solid fa-pen-nib"></i>
                                 </a>
-                                {{-- <form action="{{ route('admin.types.destroy', $project) }}" method="POST">
+                                <form action="{{ route('admin.types.destroy', $type) }}" method="POST">
                                     @method('delete')
                                     @csrf
-                                    <button type="button" class="btn btn-danger">
+                                    <button type="submit" class="btn btn-danger">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
-                                </form> --}}
+                                </form>
 
                             </div>
                         </td>
