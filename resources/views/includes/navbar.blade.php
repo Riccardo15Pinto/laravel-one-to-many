@@ -17,10 +17,17 @@
                     </li>
 
                     @guest
-                        <li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link">Scopri di più</a>
                         </li>
                     @else
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Scopri di più</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.types.index') }}"
+                                class="nav-link @if (request()->routeIs('admin.types*')) active @endif">Tipi</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link @if (request()->routeIs('admin.projects*')) active @endif"
                                 href="{{ route('admin.projects.index') }}">Projects</a>
