@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::delete('/projects/trash/{project}/drop', [ProjectController::class, 'drop'])->name('projects.trash.drop');
 
     Route::resource('projects', ProjectController::class);
+    Route::resource('types', TypeController::class);
 });
 
 
