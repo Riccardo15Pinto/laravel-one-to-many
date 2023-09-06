@@ -7,6 +7,7 @@ use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectSeeder extends Seeder
@@ -16,6 +17,7 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
+        Storage::makeDirectory('project_images');
         $data = config('project');
         $type_ids = Type::pluck('id')->toArray();
         foreach ($data as $item) {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
@@ -25,8 +26,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
+
         $project = new Project();
-        return view('admin.project.create', compact('project'));
+        $types = Type::all();
+        return view('admin.project.create', compact('project', 'types'));
     }
 
     /**
@@ -42,16 +45,19 @@ class ProjectController extends Controller
                 'name_project' => 'required|string|max:50',
                 'url_project' => 'required|string|url',
                 'description_project' => 'required|string',
-                'type_project' => 'required|string',
+                'type_id' => 'required|string|exists:types,id',
                 'image' => 'required|image'
+
             ],
             [
                 'name_project.required' => 'Il titolo è obbligatorio',
                 'url_project.required' => 'L\'url è obbligatorio',
                 'description_project.required' => 'La descrizione è obbligatoria',
-                'type_project.required' => 'La tipologia di progetto è obbligatoria',
+                'type_id.required' => 'La tipologia di progetto è obbligatoria',
+                'type_id.exists' => 'La tipologia scelta non esiste',
                 'url_project.url' => 'L\'url deve contenere http , https',
                 'image.required' => 'L\' immagine è obbligatoria'
+
             ]
         );
 
@@ -89,7 +95,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.project.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.project.edit', compact('project', 'types'));
     }
 
     /**
@@ -104,7 +111,7 @@ class ProjectController extends Controller
                 'name_project' => 'required|string|max:50',
                 'url_project' => 'required|string|url',
                 'description_project' => 'required|string',
-                'type_project' => 'required|string',
+                'type_id' => 'required|string|exists:types,id',
                 'image' => 'required|image'
 
             ],
@@ -112,7 +119,8 @@ class ProjectController extends Controller
                 'name_project.required' => 'Il titolo è obbligatorio',
                 'url_project.required' => 'L\'url è obbligatorio',
                 'description_project.required' => 'La descrizione è obbligatoria',
-                'type_project.required' => 'La tipologia di progetto è obbligatoria',
+                'type_id.required' => 'La tipologia di progetto è obbligatoria',
+                'type_id.exists' => 'La tipologia scelta non esiste',
                 'url_project.url' => 'L\'url deve contenere http , https',
                 'image.required' => 'L\' immagine è obbligatoria'
 
