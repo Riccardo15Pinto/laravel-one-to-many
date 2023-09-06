@@ -7,6 +7,8 @@
             Dettaglio tipo:
         </h2>
 
+        <a href="{{ route('admin.types.index') }}" class="btn btn-primary">Torna alla Home</a>
+
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <div class="d-flex align-items-center">
