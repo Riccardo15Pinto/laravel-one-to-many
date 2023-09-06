@@ -32,7 +32,7 @@
                         <td>
                             <div class="d-flex">
 
-                                <a href="#" class="btn btn-primary me-2">
+                                <a href="{{ route('admin.types.show', $type) }}" class="btn btn-primary me-2">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                                 <a href="#" class="btn btn-warning me-2">
