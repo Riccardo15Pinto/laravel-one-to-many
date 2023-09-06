@@ -19,7 +19,7 @@
     <div class="col-6 py-2">
         <label for="type_id" class="form-label">Tech Usata</label>
 
-        <select name="type_id" id="type_id">
+        <select name="type_id" id="type_id" class="form-control">
             <option value="">--Nessuna--</option>
 
             @foreach ($types as $type)
@@ -27,15 +27,11 @@
                     {{ $type->label }}</option>
             @endforeach
         </select>
-        {{-- <input type="text"
-            class="form-control @error('type_project') is-invalid @elseif(old('type_project')) is-valid @enderror"
-            id="type_project" placeholder="Inserisci la tecnologia usata per il progetto" name="type_project"
-            value="{{ old('type_project', $project->type_project ?? '') }}">
-        @error('type_project')
+        @error('type_id')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
-        @enderror --}}
+        @enderror
     </div>
     <div class="col-12 py-2">
         <label for="url_project" class="form-label">Url GitHub</label>
